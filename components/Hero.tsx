@@ -1,6 +1,5 @@
 "use client";
 import React from "react";
-import Nav from "./Nav";
 import { Typewriter } from "react-simple-typewriter";
 import { motion } from "framer-motion";
 import { BackgroundCircles } from "./design/Hero";
@@ -12,11 +11,12 @@ const Hero = () => {
       <div className="flex flex-col lg:flex-row items-center justify-between w-full max-w-[90rem] mx-auto pt-36 pb-16 gap-16">
         {/* Left: Text Content */}
         <motion.div
-          initial={{ opacity: 0, x: -30 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1 }}
-          className="flex-1 w-full lg:w-1/2 text-left space-y-8 px-2"
-        >
+  initial={{ opacity: 0, x: -30 }}
+  animate={{ opacity: 1, x: 0 }}
+  transition={{ duration: 1 }}
+  className="flex-1 w-full lg:w-1/2 px-2 space-y-8 text-center lg:text-left items-center lg:items-start"
+>
+
           <p className="text-xl text-gray-400">🚀 Dynamic Web Magic with Next.js</p>
 
           <h1 className="text-5xl sm:text-6xl lg:text-6xl font-extrabold leading-snug">

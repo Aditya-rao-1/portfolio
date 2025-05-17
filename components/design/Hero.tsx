@@ -40,7 +40,7 @@ export const BackgroundCircles = () => {
         </div>
 
         {/* Ball 4 */}
-        <div className="absolute top-[50%] left-[43%] transform -translate-x-1/2">
+        <div className="absolute top-[50%] max-sm:top-[55%] left-[43%] transform -translate-x-1/2">
           <div
             className={`w-12 h-12 bg-gradient-to-b from-[#DD734F] to-[#1A1A32] rounded-full transition-transform duration-1000 ease-out ${
               mounted ? "translate-y-0 opacity-100 scale-110" : "translate-y-4 opacity-50"
@@ -58,7 +58,7 @@ export const BackgroundCircles = () => {
         </div>
 
         {/* Ball 6 */}
-        <div className="absolute top-[15%] right-[40%]">
+        <div className="absolute top-[15%] max-sm:top-[19%] right-[40%]">
           <div
             className={`w-7 h-7 bg-gradient-to-b from-[#88E5BE] to-[#1A1A32] rounded-full transition-transform duration-1200 ease-out ${
               mounted ? "translate-y-0 opacity-100 scale-105" : "translate-y-4 opacity-50"

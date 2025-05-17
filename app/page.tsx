@@ -1,5 +1,6 @@
 
 import DashboardLayout from '@/components/DashboardLayout'
+import Footer from '@/components/Footer'
 import Hero from '@/components/Hero'
 import Nav from '@/components/Nav'
 import Projects from '@/components/Projects'
@@ -14,6 +15,7 @@ const page = () => {
      <DashboardLayout/>
       <Skills/>
       <Projects/>
+      <Footer/>
     </div>
   )
 }

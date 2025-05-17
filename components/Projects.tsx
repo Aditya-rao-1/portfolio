@@ -1,18 +1,18 @@
 "use client"
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { projectsData } from "../constants";
-import { BiTask } from "react-icons/bi";
 import { FaGithub, FaExternalLinkAlt } from "react-icons/fa"; // Importing Icons
 
 const Projects = () => {
   return (
     <div id="projects" className="flex flex-col items-center bg-gradient-to-br from-black via-gray-950 to-gray-800 min-h-screen p-10">
-      <div className="p-5 pt-10 text-center">
-        <h1 className="text-5xl flex gap-3 items-center justify-center font-bold text-white">
-        A Glimpse into <span className="text-[#44c2ec]">My Work</span> <BiTask className="text-[#076cfb] text-6xl" />
-        </h1>
+      <div className=" text-center">
+      <h1 className="text-3xl sm:text-4xl md:text-5xl flex flex-wrap gap-3 items-center justify-center font-bold text-white text-center">
+  A <span className="text-[#44c2ec]">Glimpse</span> into My Work 🚀
+</h1>
+
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 mt-8 w-full max-w-7xl justify-items-center">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 mt-12 w-full max-w-7xl justify-items-center">
         {projectsData.map((project, index) => (
           <ProjectCard key={index} project={project} />
         ))}
@@ -47,7 +47,7 @@ const ProjectCard = ({ project }: { project: any }) => {
   return (
     <div
       ref={cardRef}
-      className="relative w-[350px] h-[500px] bg-[#0d0c1d] text-white font-bold p-6 rounded-xl shadow-lg transition-transform duration-300 ease-out hover:shadow-2xl"
+      className="relative w-[400px] h-[500px] bg-[#0d0c1d] text-white font-bold p-6 rounded-xl shadow-lg transition-transform duration-300 ease-out hover:shadow-2xl"
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
     >

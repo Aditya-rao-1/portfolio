@@ -10,47 +10,47 @@ export const navigation = [
     {
         id: "1",
         title: "Projects",
-        url: "/projects",
+        url: "#projects",
         icon: AiOutlineProject,
     },
     {
         id: "2",
         title: "About",
-        url: "/about",
+        url: "#about",
         icon: AiOutlineUser,
     },
     {
         id: "3",
         title: "Contact me",
-        url: "/contact",
+        url: "#contact",
         icon: AiOutlineMail,
     },
 ];
 export const projectsData = [
-    {
-      title: "Shadow Play",
-      description: "A Video Streaming Web App which allows users to watch and share videos effortlessly. It brings a variety of content to your fingertips.",
-      image: "/images/shadow-play.png",
-      tags: ["react", "mongodb", "tailwind"],
-      github: "https://github.com/yourusername/shadow-play",
-      hosting: "https://shadow-play.vercel.app",
-    },
-    {
-      title: "Blog App",
-      description: "Write blogs on various topics and start your journey as an impactful content creator, exploring your passions and sharing knowledge with the world.",
-      image: "/images/blog-app.png",
-      tags: ["react", "appwrite", "tailwind"],
-      github: "https://github.com/yourusername/blog-app",
-      hosting: "https://blog-app.vercel.app",
-    },
-    {
-      title: "ChitChat",
-      description: "A ChatApp which includes social login, user search and addition, text messaging with emojis, user blocking/unblocking, and real-time messaging with image support.",
-      image: "/images/chitchat.png",
-      tags: ["react", "firebase", "tailwind"],
-      github: "https://github.com/yourusername/chitchat",
-      hosting: "https://chitchat.vercel.app",
-    }
+  {
+    title: "MERN Food Ordering App",
+    description: "A full-featured food ordering platform with real-time order tracking, cart management, and admin dashboard—built using the MERN stack.",
+    image: "food.png",
+    tags: ["react", "node", "express", "mongodb", "jwt"],
+    github: "http://github.com/Aditya-rao-1/fullstack_fooddelivery",
+    hosting: "http://localhost:3000", // Replace with live link if hosted
+  },
+  {
+    title: "AI Document Processor",
+    description: "An AI-powered system for PDF document parsing, embedding, and question-answering with multi-turn memory using AWS Textract, Pinecone, and Titan LLM.",
+    image: "hero.png",
+    tags: ["python", "aws", "nlp", "pinecone", "rag"],
+    github: "https://github.com/Aditya-rao-1/Intelligent_document_processing",
+    hosting: "http://localhost:8501", // Or wherever the streamlit/app runs
+  },
+  {
+    title: "Secure Data Handling",
+    description: "A secure full-stack app to encrypt user data, send signed emails, and verify digital signatures using AES, HMAC, and Bcrypt hashing.",
+    image: "secure.png",
+    tags: ["react", "flask", "tailwind", "crypto"],
+    github: "https://github.com/Aditya-rao-1/secure_data_handling",
+    hosting: "https://secure-data-handling.onrender.com",
+  }
   ];
   export const skill = [
     { id: "0", title: "HTML", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg", width: 70, height: 70 },
@@ -74,3 +74,28 @@ export const projectsData = [
     { id: "18", title: "Python", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg", width: 70, height: 70 },
     
 ];  
+
+import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { SiGmail } from "react-icons/si";
+
+
+
+export const socialMedia = [
+  {
+    id: 1,
+    icon: FaGithub,
+    url: "https://github.com/Aditya-rao-1",
+  },
+  {
+    id: 2,
+    icon: SiGmail,
+    copy: true,
+    email: "raoaditya840@gmail.com",
+  },
+  {
+    id: 3,
+    icon: FaLinkedin,
+    url: "https://www.linkedin.com/in/aditya-rao-7044a3317/",
+  },
+];
+
