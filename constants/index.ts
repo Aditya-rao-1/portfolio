@@ -33,7 +33,7 @@ export const projectsData = [
     image: "food.png",
     tags: ["react", "node", "express", "mongodb", "jwt"],
     github: "http://github.com/Aditya-rao-1/fullstack_fooddelivery",
-    hosting: "http://localhost:3000", // Replace with live link if hosted
+    hosting: "https://foodorder-mern-stack.vercel.app", 
   },
   {
     title: "AI Document Processor",
