@@ -32,7 +32,7 @@ export const projectsData = [
     description: "A full-featured food ordering platform with real-time order tracking, cart management, and admin dashboard—built using the MERN stack.",
     image: "food.png",
     tags: ["react", "node", "express", "mongodb", "jwt"],
-    github: "http://github.com/Aditya-rao-1/fullstack_fooddelivery",
+    github: "https://github.com/Aditya-rao-1/foodorder_MERN_STACK",
     hosting: "https://foodorder-mern-stack.vercel.app", 
   },
   {
