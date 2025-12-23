@@ -43,10 +43,10 @@ export const projectsData = [
     github: "https://github.com/Aditya-rao-1/Intelligent_document_processing",
     hosting: "http://localhost:8501", // Or wherever the streamlit/app runs
   },
-{
+  {
     title: "Automated Web-Testing using NLP",
     description: "Built a full-stack platform using Ollama (TinyLlama) to convert natural language into JSON-based tests, with Playwright automation and a Flask/React dashboard for test history and screenshots.",
-    image: "https://drive.google.com/uc?export=view&id=1DVj7emQXZzttHwcWsYFyenKlYPND1aZv",
+    image: "webtesting.png",
     tags: ["react", "flask", "NLP", "LLM"],
     github: "https://github.com/Aditya-rao-1/Automated-Web-Testing-with-NLP",
     hosting: "",
@@ -55,7 +55,7 @@ export const projectsData = [
     title: "Secure Data Handling",
     description: "A secure full-stack app to encrypt user data, send signed emails, and verify digital signatures using AES, HMAC, and Bcrypt hashing.",
     image: "secure.png",
-    tags: ["react", "flask", "tailwind", "crypto"],
+    tags: ["react", "flask", "tailwind"],
     github: "https://github.com/Aditya-rao-1/secure_data_handling",
     hosting: "https://secure-data-handling.onrender.com",
   }
