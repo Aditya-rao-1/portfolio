@@ -1,32 +1,88 @@
-import { AiOutlineHome, AiOutlineProject, AiOutlineUser, AiOutlineMail } from "react-icons/ai";
+import { AiOutlineHome, AiOutlineProject, AiOutlineUser, AiOutlineMail, AiOutlineCalendar } from "react-icons/ai";
 
 export const navigation = [
     {
         id: "0",
         title: "Home",
-        url: "/",
+        url: "#home",
         icon: AiOutlineHome, // Pass reference, not JSX
     },
     {
         id: "1",
-        title: "Projects",
-        url: "#projects",
-        icon: AiOutlineProject,
-    },
-    {
-        id: "2",
-        title: "About",
-        url: "#about",
+      title: "About",
+      url: "#about",
         icon: AiOutlineUser,
     },
     {
+        id: "2",
+      title: "Experience",
+      url: "#experience",
+        icon: AiOutlineCalendar,
+    },
+    {
         id: "3",
-        title: "Contact me",
+      title: "Projects",
+      url: "#projects",
+      icon: AiOutlineProject,
+    },
+    {
+      id: "4",
+        title: "Contact",
         url: "#contact",
         icon: AiOutlineMail,
     },
 ];
-export const projectsData = [
+
+export type ExperienceItem = {
+  company: string;
+  role: string;
+  location: string;
+  date: string;
+  bullets: string[];
+};
+
+export const experienceData: ExperienceItem[] = [
+  {
+    company: "GEMA Service LTD",
+    role: "Full-Stack Developer",
+    location: "Product Development",
+    date: "2026 - Ongoing",
+    bullets: [
+      "Designed and developed a full-stack teacher module for kidrove.com, enhancing platform functionality and user experience.",
+      "Built Teaching Event pages and Admin dashboards, improving platform functionality and user experience.",
+    ],
+  },
+  {
+    company: "Sasken Technologies Ltd.",
+    role: "Intern",
+    location: "Automation / Full-Stack",
+    date: "June 2025 - July 2025",
+    bullets: [
+      "Created a full-stack platform using Ollama and Playwright to automate web testing from natural language input.",
+    ],
+  },
+  {
+    company: "MSIS MAHE, Manipal",
+    role: "Research Intern",
+    location: "Research / AI Systems",
+    date: "Dec 2024 - May 2025",
+    bullets: [
+      "Built an AI document pipeline with AWS Textract, NLP, and Pinecone.",
+      "Designed a scalable RAG system using Amazon Titan for real-time querying.",
+    ],
+  },
+];
+
+export type Project = {
+  title: string;
+  description: string;
+  image: string;
+  tags: string[];
+  github: string;
+  hosting?: string;
+};
+
+export const projectsData: Project[] = [
   {
     title: "MERN Food Ordering App",
     description: "A full-featured food ordering platform with real-time order tracking, cart management, and admin dashboard—built using the MERN stack.",
@@ -41,7 +97,7 @@ export const projectsData = [
     image: "hero.png",
     tags: ["python", "aws", "nlp", "pinecone", "rag"],
     github: "https://github.com/Aditya-rao-1/Intelligent_document_processing",
-    hosting: "http://localhost:8501", // Or wherever the streamlit/app runs
+    hosting: "https://intelligent-document-processing.vercel.app",
   },
   {
     title: "Automated Web-Testing using NLP",
@@ -60,7 +116,8 @@ export const projectsData = [
     hosting: "https://secure-data-handling.onrender.com",
   }
   ];
-  export const skill = [
+
+export const skill = [
     { id: "0", title: "HTML", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg", width: 70, height: 70 },
     { id: "1", title: "CSS", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg", width: 70, height: 70 },
     { id: "2", title: "Bootstrap", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg", width: 70, height: 70 },
@@ -98,7 +155,7 @@ export const socialMedia = [
     id: 2,
     icon: SiGmail,
     copy: true,
-    email: "raoaditya840@gmail.com",
+    email: "kallamone05@gmail.com",
   },
   {
     id: 3,

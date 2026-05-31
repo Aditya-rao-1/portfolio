@@ -1,15 +1,38 @@
 "use client";
-import { useRef, useState } from "react";
-import { projectsData } from "../constants";
+import { useEffect, useRef, useState } from "react";
+import { Project, projectsData } from "../constants";
 import { FaGithub, FaExternalLinkAlt, FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 const Projects = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const visibleCards = 3;
+  const [containerWidth, setContainerWidth] = useState(0);
+  const containerRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const updateLayout = () => {
+      if (containerRef.current) {
+        setContainerWidth(containerRef.current.clientWidth);
+      }
+    };
+
+    updateLayout();
+    window.addEventListener("resize", updateLayout);
+    return () => window.removeEventListener("resize", updateLayout);
+  }, []);
+
+  const visibleCards = containerWidth >= 1280 ? 3 : containerWidth >= 768 ? 2 : 1;
+  const gap = containerWidth >= 768 ? 40 : 24;
+  const cardWidth = Math.max(
+    280,
+    Math.min(400, containerWidth ? (containerWidth - gap * (visibleCards - 1)) / visibleCards : 360)
+  );
+  const cardStep = cardWidth + gap;
+  const maxIndex = Math.max(0, projectsData.length - visibleCards);
+  const safeIndex = Math.min(currentIndex, maxIndex);
 
   const handleNext = () => {
-    if (currentIndex < projectsData.length - visibleCards) {
-      setCurrentIndex((prev) => prev + 1);
+    if (currentIndex < maxIndex) {
+      setCurrentIndex((prev) => Math.min(prev + 1, maxIndex));
     }
   };
 
@@ -22,69 +45,69 @@ const Projects = () => {
   return (
     <div
       id="projects"
-      className="flex flex-col items-center bg-gradient-to-br from-black via-gray-950 to-gray-800 min-h-screen p-10"
+      className="relative overflow-hidden bg-gradient-to-br from-black via-gray-950 to-gray-800 px-5 py-24"
     >
-      <div className="text-center">
-        <h1 className="text-3xl sm:text-4xl md:text-5xl flex flex-wrap gap-3 items-center justify-center font-bold text-white text-center">
-          A <span className="text-[#44c2ec]">Glimpse</span> into My Work 🚀
-        </h1>
-      </div>
-
-      {/* Slider Container */}
-      <div className="relative w-full max-w-7xl mt-12 h-[500px]">
-
-        {/* Clip wrapper: keeps cards clipped while allowing arrows outside */}
-        <div className="w-full h-full overflow-hidden">
-
-          {/* Cards Wrapper */}
-          <div
-            className="flex gap-10 transition-transform duration-500 ease-in-out"
-            style={{
-              transform: `translateX(-${currentIndex * 440}px)`,
-            }}
-          >
-            {projectsData.map((project, index) => (
-              <ProjectCard key={index} project={project} />
-            ))}
-          </div>
-
+      <div className="mx-auto w-full max-w-7xl">
+        <div className="text-center">
+          <p className="text-sm uppercase tracking-[0.35em] text-[#44c2ec]">Projects</p>
+          <h1 className="mt-3 text-3xl sm:text-4xl md:text-5xl font-bold text-white text-center">
+            Selected <span className="text-[#44c2ec]">work</span> with impact
+          </h1>
+          <p className="mx-auto mt-5 max-w-3xl text-base sm:text-lg text-gray-400">
+            A curated set of products, automation tools, and AI systems that reflect both technical depth and visual polish.
+          </p>
         </div>
 
-        {/* Left Arrow */}
-        {currentIndex > 0 && (
-          <button
-            onClick={handlePrev}
-            className="absolute left-[-75px] top-1/2 
-               -translate-y-1/2 
-               bg-black/80 p-5 rounded-full 
-               text-white hover:bg-black 
-               transition z-50"
-          >
-            <FaChevronLeft size={36} />
-          </button>
-        )}
+        {/* Slider Container */}
+        <div ref={containerRef} className="relative mt-14 h-[560px] w-full">
+          {/* Clip wrapper: keeps cards clipped while allowing arrows outside */}
+          <div className="relative z-10 h-full w-full overflow-hidden">
+
+            {/* Cards Wrapper */}
+            <div
+              className="flex transition-transform duration-500 ease-out"
+              style={{
+                gap: `${gap}px`,
+                transform: `translateX(-${safeIndex * cardStep}px)`,
+              }}
+            >
+              {projectsData.map((project, index) => (
+                <ProjectCard key={index} project={project} cardWidth={cardWidth} />
+              ))}
+            </div>
+
+          </div>
+
+          {/* Left Arrow */}
+          {safeIndex > 0 && (
+            <button
+              onClick={handlePrev}
+              className="absolute left-3 top-1/2 z-20 -translate-y-1/2 rounded-full border border-white/10 bg-black/60 p-3 text-white shadow-lg backdrop-blur transition hover:scale-105 hover:bg-black/80 md:left-0 md:-translate-x-1/2"
+              aria-label="Previous projects"
+            >
+              <FaChevronLeft size={22} />
+            </button>
+          )}
 
 
-        {/* Right Arrow */}
-        {currentIndex < projectsData.length - visibleCards && (
-          <button
-            onClick={handleNext}
-            className="absolute right-[-75px] top-1/2 
-               -translate-y-1/2 
-               bg-black/80 p-5 rounded-full 
-               text-white hover:bg-black 
-               transition z-50"
-          >
-            <FaChevronRight size={36} />
-          </button>
-        )}
+          {/* Right Arrow */}
+          {safeIndex < maxIndex && (
+            <button
+              onClick={handleNext}
+              className="absolute right-3 top-1/2 z-20 -translate-y-1/2 rounded-full border border-white/10 bg-black/60 p-3 text-white shadow-lg backdrop-blur transition hover:scale-105 hover:bg-black/80 md:right-0 md:translate-x-1/2"
+              aria-label="Next projects"
+            >
+              <FaChevronRight size={22} />
+            </button>
+          )}
 
+        </div>
       </div>
     </div>
   );
 };
 
-const ProjectCard = ({ project }: { project: any }) => {
+const ProjectCard = ({ project, cardWidth }: { project: Project; cardWidth: number }) => {
   const cardRef = useRef<HTMLDivElement>(null);
 
   const handleMouseMove = (e: React.MouseEvent) => {
@@ -110,31 +133,44 @@ const ProjectCard = ({ project }: { project: any }) => {
   return (
     <div
       ref={cardRef}
-      className="relative w-[400px] h-[500px] bg-[#0d0c1d] text-white font-bold p-6 rounded-xl shadow-lg transition-transform duration-300 ease-out hover:shadow-2xl flex-shrink-0"
+      style={{ width: `${cardWidth}px` }}
+      className="group relative flex h-[540px] flex-shrink-0 flex-col overflow-hidden rounded-[28px] border border-white/10 bg-white/5 p-4 text-white shadow-[0_20px_60px_rgba(0,0,0,0.35)] backdrop-blur-xl transition-transform duration-300 ease-out hover:shadow-[0_24px_80px_rgba(68,194,236,0.12)]"
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
     >
-      <img
-        src={project.image}
-        alt={project.title}
-        className="w-full h-[200px] object-cover rounded-lg"
-      />
-      <h3 className="text-xl font-semibold mt-4">{project.title}</h3>
-      <p className="text-sm text-gray-400 mt-2">{project.description}</p>
-      <div className="flex items-center gap-2 mt-4">
-        {project.tags.map((tag: string, i: number) => (
-          <span key={i} className="text-sm text-[#8888ff]">
-            #{tag}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(68,194,236,0.18),transparent_35%),linear-gradient(180deg,rgba(255,255,255,0.05),transparent)] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+      <div className="relative z-10 flex h-full flex-col">
+        <img
+          src={project.image}
+          alt={project.title}
+          className="h-[190px] w-full rounded-[20px] object-cover ring-1 ring-white/10"
+        />
+        <div className="mt-4 flex items-center justify-between gap-3">
+          <span className="rounded-full border border-[#44c2ec]/25 bg-[#44c2ec]/10 px-3 py-1 text-xs font-medium uppercase tracking-[0.18em] text-[#7fe0f6]">
+            Featured
           </span>
-        ))}
-      </div>
-      <div className="flex justify-between items-center mt-4">
-        <a href={project.github} target="_blank" rel="noopener noreferrer">
-          <FaGithub className="text-white text-3xl hover:text-gray-400 transition" />
-        </a>
-        <a href={project.hosting} target="_blank" rel="noopener noreferrer">
-          <FaExternalLinkAlt className="text-green-400 text-3xl hover:text-green-300 transition" />
-        </a>
+          <span className="text-xs text-gray-400">Project</span>
+        </div>
+        <h3 className="mt-3 text-xl font-semibold leading-snug text-white">{project.title}</h3>
+        <p className="mt-2 max-h-[88px] overflow-hidden text-sm leading-6 text-gray-300">{project.description}</p>
+        <div className="mt-3 flex max-h-[54px] flex-wrap items-start gap-2 overflow-hidden">
+          {project.tags.map((tag: string, i: number) => (
+            <span key={i} className="rounded-full border border-white/10 bg-black/30 px-3 py-1 text-xs uppercase tracking-[0.14em] text-gray-200">
+              {tag}
+            </span>
+          ))}
+        </div>
+        <div className="mt-auto flex items-center justify-between pt-6">
+          <a href={project.github} target="_blank" rel="noopener noreferrer" aria-label={`${project.title} GitHub repository`} className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-black/30 text-white transition hover:border-[#44c2ec]/50 hover:text-[#44c2ec]">
+            <FaGithub className="text-xl" />
+          </a>
+          {project.hosting && (
+            <a href={project.hosting} target="_blank" rel="noopener noreferrer" aria-label={`${project.title} live demo`} className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-medium text-white transition hover:border-[#44c2ec]/40 hover:bg-white/10">
+              <FaExternalLinkAlt className="text-sm text-[#44c2ec]" />
+              Live
+            </a>
+          )}
+        </div>
       </div>
     </div>
   );

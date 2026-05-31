@@ -1,0 +1,16 @@
+{
+  "name": "Adithya Rao Portfolio",
+  "short_name": "Portfolio",
+  "description": "Portfolio of Adithya Rao, a full-stack developer building modern web apps and AI tools.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#050816",
+  "theme_color": "#050816",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

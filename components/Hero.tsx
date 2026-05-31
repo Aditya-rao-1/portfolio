@@ -17,7 +17,7 @@ const Hero = () => {
   className="flex-1 w-full lg:w-1/2 px-2 space-y-8 text-center lg:text-left items-center lg:items-start"
 >
 
-          <p className="text-xl text-gray-400">🚀 Dynamic Web Magic with Next.js</p>
+          <p className="text-xl text-gray-400">🚀 Turning Ideas into Fast, Elegant Web Apps</p>
 
           <h1 className="text-5xl sm:text-6xl lg:text-6xl font-extrabold leading-snug">
             Building Intelligent <br />
@@ -38,7 +38,7 @@ const Hero = () => {
           </h1>
 
           <p className="text-2xl text-gray-300 max-w-2xl">
-            Hi! I'm Adithya
+            Hi! I&apos;m Adithya
             <span className="bg-gradient-to-r from-[#44c2ec] to-[#5a6eef] bg-clip-text text-transparent font-semibold">
               , a versatile developer, tech enthusiast, and problem solver.
             </span>
