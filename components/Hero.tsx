@@ -8,7 +8,7 @@ const Hero = () => {
   return (
     <div className="relative bg-gradient-to-br from-gray-800 via-black to-black text-white min-h-screen flex flex-col px-4 sm:px-6 overflow-hidden">
 
-      <div className="flex flex-col lg:flex-row items-center justify-between w-full max-w-[90rem] mx-auto pt-36 pb-16 gap-16">
+      <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between w-full max-w-[90rem] mx-auto pt-32 lg:pt-12 pb-16 gap-16">
         {/* Left: Text Content */}
         <motion.div
   initial={{ opacity: 0, x: -30 }}
@@ -53,14 +53,16 @@ const Hero = () => {
           className="flex-1 w-full lg:w-1/2 flex justify-center"
         >
           <img
-            src="he.webp"
+            src="me.jpeg"
             alt="Tech Illustration"
-            className="w-[100%] max-w-[750px] rounded-xl drop-shadow-xl"
+            className="w-[120%] max-w-[900px] rounded-xl drop-shadow-xl "
           />
         </motion.div>
       </div>
 
-      <BackgroundCircles />
+      <div className="hidden md:block">
+        <BackgroundCircles />
+      </div>
     </div>
   );
 };

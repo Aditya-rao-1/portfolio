@@ -80,16 +80,27 @@ export type Project = {
   tags: string[];
   github: string;
   hosting?: string;
+  category: string;
 };
 
 export const projectsData: Project[] = [
+   {
+    title: "Kidrove Platform",
+    description: "Kidrove helps UAE parents discover trusted kids’ activities and family experiences while connecting providers with the right audience.",
+    image: "kidrove.png",
+    tags: ["NextJs", "node", "express", "mongodb", "jwt"],
+    github: "",
+    hosting: "https://kidrove.com",
+    category: "FULL-STACK"
+  },
   {
     title: "MERN Food Ordering App",
     description: "A full-featured food ordering platform with real-time order tracking, cart management, and admin dashboard—built using the MERN stack.",
     image: "food.png",
     tags: ["react", "node", "express", "mongodb", "jwt"],
     github: "https://github.com/Aditya-rao-1/foodorder_MERN_STACK",
-    hosting: "https://foodorder-mern-stack.vercel.app", 
+    hosting: "https://foodorder-mern-stack.vercel.app",
+    category: "FULL-STACK"
   },
   {
     title: "AI Document Processor",
@@ -97,7 +108,8 @@ export const projectsData: Project[] = [
     image: "hero.png",
     tags: ["python", "aws", "nlp", "pinecone", "rag"],
     github: "https://github.com/Aditya-rao-1/Intelligent_document_processing",
-    hosting: "https://intelligent-document-processing.vercel.app",
+    hosting: "",
+    category: "AI/ML"
   },
   {
     title: "Automated Web-Testing using NLP",
@@ -106,6 +118,7 @@ export const projectsData: Project[] = [
     tags: ["react", "flask", "NLP", "LLM"],
     github: "https://github.com/Aditya-rao-1/Automated-Web-Testing-with-NLP",
     hosting: "",
+    category: "AUTOMATION"
   },
   {
     title: "Secure Data Handling",
@@ -114,7 +127,9 @@ export const projectsData: Project[] = [
     tags: ["react", "flask", "tailwind"],
     github: "https://github.com/Aditya-rao-1/secure_data_handling",
     hosting: "https://secure-data-handling.onrender.com",
-  }
+    category: "SECURITY"
+  },
+  
   ];
 
 export const skill = [
